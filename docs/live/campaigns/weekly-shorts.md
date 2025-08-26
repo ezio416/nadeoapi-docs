@@ -11,11 +11,11 @@ parameters:
   query:
     - name: length
       type: integer
-      description: The number of weekly shorts campaigns to retrieve
+      description: The number of weeks to retrieve
       default: 1
     - name: offset
       type: integer
-      description: The number of weekly shorts campaigns to skip (looking backwards from the current campaign)
+      description: The number of weeks to skip (looking backwards from the current week)
       default: 0
 ---
 
