@@ -3,7 +3,7 @@ name: Get account records (v2)
 
 url: https://prod.trackmania.core.nadeo.online
 method: GET
-route: /v2/accounts/{accountId}/mapRecords?gameMode={gameMode}
+route: /v2/accounts/{accountId}/mapRecords?gameMode={gameMode}&length={length}&offset={offset}
 
 audience: NadeoServices
 
@@ -16,8 +16,17 @@ parameters:
   query:
     - name: gameMode
       type: string
-      description: The game mode of the requested records (e.g. for Stunt maps)
-      required: false
+      description: The game mode of the requested records
+      default: "TimeAttack"
+    - name: length
+      type: integer
+      description: The number of records to retrieve
+      default: 1000
+      max: 1000
+    - name: offset
+      type: integer
+      description: The number of records to skip
+      default: 0
 ---
 
 Gets records for the currently authenticated account.
@@ -26,9 +35,10 @@ Gets records for the currently authenticated account.
 
 **Remarks**:
 
-- This endpoint only works for the currently authenticated account, requesting others' records will result in error `403`. This feature is not supported when using a dedicated server account's token.
-- This endpoint is limited to the most recent 1,000 records driven by the currently authenticated account. Retrieving all historical records is not supported.
+- This endpoint only works for the currently authenticated account - requesting others' records will result in error `403`. This feature is not supported when using a dedicated server account's token.
+- This endpoint does not seem to return records in any particular order, but the order should be the same each time.
 - To retrieve records driven on Stunt maps (with the map type `TrackMania\TM_Stunt`), set the `gameMode` query parameter to `"Stunt"`.
+- To retrieve records driven on Platform maps (with the map type `TrackMania\TM_Platform`), set the `gameMode` query parameter to `"Platform"`.
 - If the map author has set a secret threshold score for their map, this endpoint will not return any actual `time` values for some entries. Instead, those leaderboard entries will contain `4294967295` in the `time` field. Additionally, the `url` link will result in a `403` error when requested.
 
 ---
