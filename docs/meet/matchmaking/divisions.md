@@ -21,7 +21,7 @@ Gets division definitions/rules for the different matchmaking modes.
 
 **Remarks**:
 
-- The `matchmakingType` parameter is typically `5` (Ranked 2v2). For a dynamic way of retrieving those IDs see [the matchmaking summary endpoint](/meet/matchmaking/summary).
+- The `matchmakingType` parameter is typically `5` (Ranked 2v2). For a dynamic way of retrieving those IDs see [the matchmaking summary endpoint](/meet/matchmaking/summary). This parameter may also be a string, i.e. `"ranked-2v2"`.
 
 ---
 
