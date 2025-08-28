@@ -26,7 +26,6 @@ parameters:
     - name: active
       type: Boolean
       description: Optional filter for enabled/disabled activities
-      required: false
 ---
 
 Gets a list of club activities, including news, rooms, campaigns, and others.
